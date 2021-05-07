@@ -120,6 +120,7 @@ export default {
       this.showWinnerScreen = false
       this.pickedWinner = false
       this.currentName = ''
+      this.zoomingNames = false
     },
     shuffle(a) {
       var j, x, i;
