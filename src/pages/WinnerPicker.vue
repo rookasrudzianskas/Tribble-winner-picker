@@ -48,6 +48,8 @@
 </template>
 
 <script>
+let animateNamesInterval
+
 export default {
   data() {
     return {
@@ -62,6 +64,7 @@ export default {
       this.showWinnerScreen = true
       this.initNamesArray()
       this.animateNames()
+      this.stopAnimatingNames()
     },
     initNamesArray() {
       this.namesArray = this.namesText.split('\n')
@@ -74,7 +77,7 @@ export default {
     animateNames() {
       let counter = 0
 
-      setInterval(() => {
+      animateNamesInterval = setInterval(() => {
         // goes by the interval, displays name from the array, and after 0.2s changes
         this.currentName = this.namesArray[counter]
         /// then we reach the end of the array
@@ -90,6 +93,11 @@ export default {
           this.currentName = ''
         }, 100)
       }, 200)
+    },
+    stopAnimatingNames() {
+      setTimeout(() => {
+        clearInterval(animateNamesInterval)
+      }, 4000)
     },
     shuffle(a) {
       var j, x, i;
