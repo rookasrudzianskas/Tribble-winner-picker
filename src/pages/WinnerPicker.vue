@@ -180,6 +180,12 @@ export default {
     &.zoom {
       transform: scale(3);
     }
+    .q-card {
+      box-shadow:
+        0 0 15px 7.5px #fff,
+        0 0 25px 15px #f0f,
+        0 0 35px 22.5px #0ff;
+    }
   }
   .start-again {
     bottom: 20px;
