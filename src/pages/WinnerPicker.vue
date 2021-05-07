@@ -5,14 +5,14 @@
 
     <q-card class="add-names column bg-red">
       <q-card-section>
-        <h2 class="text-center q-mt-none q-mb-md text-white text-bold">WINNER PICKER</h2>
+        <h2 class="text-center q-mt-none q-mb-md text-white text-bold">🔥 WINNER PICKER 🔥</h2>
 
         <q-input
           v-model="text"
           filled
           type="textarea"
           bg-color="white"
-          placeholder="Enter names on separate lines.."
+          placeholder="Enter names on separate lines.. 🧒 🧑 👴 👽"
           rows="10"
           cols="40"
         />
@@ -25,6 +25,9 @@
         </div>
 
       </q-card-section>
+      <div class="winner-screen">
+        <p class="text-white">Winner screen</p>
+      </div>
     </q-card>
 
   </q-page>
