@@ -37,6 +37,10 @@
           <div class="text-h6">Rookas</div>
         </q-card-section>
       </q-card>
+
+      <q-btn color="primary" class="start-again absolute" label="Start Again ➿">
+
+      </q-btn>
     </div>
 
   </q-page>
@@ -95,5 +99,10 @@ export default {
 
 .winner-screen {
   z-index: 4;
+  .start-again {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 </style>
