@@ -33,7 +33,8 @@
 
     <div  v-else class="winner-screen">
       <h1 v-if="pickedWinner" class=" deep-shadow text-white absolute-top text-center text-bold">WINNER!! 🥰</h1>
-      <div class="name-card">
+      <div class="name-card"
+       :class="{'zoom' : zoomingNames}">
       <q-card v-if="currentName" dark :class="!pickedWinner?'bg-primary':'bg-green-7' " bordered>
         <q-card-section>
           <div class="text-h6">{{ currentName }}</div>
@@ -61,7 +62,8 @@ export default {
       namesText: '',
       namesArray: [],
       currentName: '',
-      pickedWinner: false
+      pickedWinner: false,
+      zoomingNames: false
 
     }
   },
@@ -71,17 +73,14 @@ export default {
       this.initNamesArray()
       this.animateNames()
       this.stopAnimatingNames()
+      this.zoomNames()
     },
     initNamesArray() {
       this.namesArray = this.namesText.split('\n')
       this.namesArray = this.shuffle(this.namesArray)
       // console.log("🚀", this.namesArray)
     },
-    startAgain() {
-      this.showWinnerScreen = false
-      this.pickedWinner = false
-      this.currentName = ''
-    },
+
     animateNames() {
       let counter = 0
 
@@ -111,6 +110,16 @@ export default {
         clearInterval(animateNamesInterval)
         this.pickedWinner = true
       }, 8400)
+    },
+    zoomNames() {
+      setTimeout(() => {
+        this.zoomingNames = true
+      }, 1000)
+    },
+    startAgain() {
+      this.showWinnerScreen = false
+      this.pickedWinner = false
+      this.currentName = ''
     },
     shuffle(a) {
       var j, x, i;
