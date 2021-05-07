@@ -38,7 +38,7 @@
         </q-card-section>
       </q-card>
 
-      <q-btn color="primary" class="start-again absolute" label="Start Again ➿">
+      <q-btn @click="startAgain" color="primary" class="start-again absolute" label="Start Again ➿">
 
       </q-btn>
     </div>
@@ -56,6 +56,9 @@ export default {
   methods: {
     pickWinner() {
       this.showWinnerScreen = true
+    },
+    startAgain() {
+      this.showWinnerScreen = false
     }
   }
 }
