@@ -44,6 +44,8 @@
       </q-btn>
     </div>
 
+    <audio v-if="showWinnerScreen" src="../assets/drum-roll.wav" autoplay></audio>
+
   </q-page>
 </template>
 
@@ -81,23 +83,26 @@ export default {
     animateNames() {
       let counter = 0
 
-      animateNamesInterval = setInterval(() => {
-        // goes by the interval, displays name from the array, and after 0.2s changes
-        this.currentName = ''
-        /// then we reach the end of the array
-        if(counter === this.namesArray.length -1) {
-          // we set the counter to 0 and start again
-          counter = 0
-        } else {
+      setTimeout(() => {
 
-          // we increment by one
-          counter++
-        }
-        setTimeout(() => {
-          this.currentName = this.namesArray[counter]
+        animateNamesInterval = setInterval(() => {
+          // goes by the interval, displays name from the array, and after 0.2s changes
+          this.currentName = ''
+          /// then we reach the end of the array
+          if(counter === this.namesArray.length -1) {
+            // we set the counter to 0 and start again
+            counter = 0
+          } else {
 
-        }, 100)
-      }, 200)
+            // we increment by one
+            counter++
+          }
+          setTimeout(() => {
+            this.currentName = this.namesArray[counter]
+
+          }, 100)
+        }, 200)
+      }, 700)
     },
     stopAnimatingNames() {
       setTimeout(() => {
