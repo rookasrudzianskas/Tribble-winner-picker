@@ -86,6 +86,9 @@ export default {
           // we increment by one
           counter++
         }
+        setTimeout(() => {
+          this.currentName = ''
+        }, 100)
       }, 200)
     },
     shuffle(a) {
