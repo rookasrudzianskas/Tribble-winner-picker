@@ -10,7 +10,7 @@
         <h2 class="text-center q-mt-none q-mb-md text-white text-bold deep-shadow">🔥 WINNER PICKER 🔥</h2>
 
         <q-input
-          v-model="text"
+          v-model="namesText"
           filled
           type="textarea"
           bg-color="white"
@@ -20,6 +20,7 @@
         />
         <div class="row justify-center q-mt-md">
           <q-btn
+            :disabled="!namesText"
             @click="pickWinner"
             label="Pick a Winner 🚀"
             color="primary"
@@ -50,7 +51,8 @@
 export default {
   data() {
     return {
-      showWinnerScreen: false
+      showWinnerScreen: false,
+      namesText: '',
     }
   },
   methods: {
