@@ -16,6 +16,14 @@
           rows="10"
           cols="40"
         />
+        <div class="row justify-center q-mt-md">
+          <q-btn
+            label="Pick a Winner 🚀"
+            color="primary"
+            size="xl"
+          />
+        </div>
+
       </q-card-section>
     </q-card>
 
