@@ -1,9 +1,11 @@
 <template>
   <q-page class="flex flex-center bg-black">
     <div class="stage fullscreen"></div>
-      <div class="curtain fullscreen show"></div>
+      <div
+        :class="{'show' : !showWinnerScreen}"
+        class="curtain fullscreen"></div>
 
-    <q-card class="add-names column bg-red">
+    <q-card class="add-names column bg-red" v-if="!showWinnerScreen">
       <q-card-section>
         <h2 class="text-center q-mt-none q-mb-md text-white text-bold">🔥 WINNER PICKER 🔥</h2>
 
@@ -18,6 +20,7 @@
         />
         <div class="row justify-center q-mt-md">
           <q-btn
+            @click="pickWinner"
             label="Pick a Winner 🚀"
             color="primary"
             size="xl"
@@ -25,17 +28,27 @@
         </div>
 
       </q-card-section>
-      <div class="winner-screen">
-        <p class="text-white">Winner screen</p>
-      </div>
     </q-card>
+
+    <div  v-else class="winner-screen">
+      <p class="text-white">Winner screen</p>
+    </div>
 
   </q-page>
 </template>
 
 <script>
 export default {
-  name: 'PageIndex'
+  data() {
+    return {
+      showWinnerScreen: false
+    }
+  },
+  methods: {
+    pickWinner() {
+      this.showWinnerScreen = true
+    }
+  }
 }
 </script>
 
@@ -74,4 +87,7 @@ export default {
 
 }
 
+.winner-screen {
+  z-index: 4;
+}
 </style>
