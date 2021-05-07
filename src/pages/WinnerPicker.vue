@@ -33,9 +33,9 @@
 
     <div  v-else class="winner-screen">
       <h1 class=" deep-shadow text-white absolute-top text-center text-bold">WINNER!! 🥰</h1>
-      <q-card dark class="bg-primary" bordered>
+      <q-card v-if="currentName" dark class="bg-primary" bordered>
         <q-card-section>
-          <div class="text-h6">Rookas</div>
+          <div class="text-h6">{{ currentName }}</div>
         </q-card-section>
       </q-card>
 
@@ -54,20 +54,39 @@ export default {
       showWinnerScreen: false,
       namesText: '',
       namesArray: [],
+      currentName: '',
     }
   },
   methods: {
     pickWinner() {
       this.showWinnerScreen = true
       this.initNamesArray()
+      this.animateNames()
     },
     initNamesArray() {
       this.namesArray = this.namesText.split('\n')
       this.namesArray = this.shuffle(this.namesArray)
-      console.log("🚀", this.namesArray)
+      // console.log("🚀", this.namesArray)
     },
     startAgain() {
       this.showWinnerScreen = false
+    },
+    animateNames() {
+      let counter = 0
+
+      setInterval(() => {
+        // goes by the interval, displays name from the array, and after 0.2s changes
+        this.currentName = this.namesArray[counter]
+        /// then we reach the end of the array
+        if(counter === this.namesArray.length -1) {
+          // we set the counter to 0 and start again
+          counter = 0
+        } else {
+
+          // we increment by one
+          counter++
+        }
+      }, 200)
     },
     shuffle(a) {
       var j, x, i;
