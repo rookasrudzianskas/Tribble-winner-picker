@@ -33,7 +33,7 @@
 
     <div  v-else class="winner-screen">
       <h1 v-if="pickedWinner" class=" deep-shadow text-white absolute-top text-center text-bold">WINNER!! 🥰</h1>
-      <q-card v-if="currentName" dark :class="pickedWinner ? 'bg-green-7' : 'bg-primary' " bordered>
+      <q-card v-if="currentName" dark :class="!pickedWinner?'bg-primary':'bg-green-7' " bordered>
         <q-card-section>
           <div class="text-h6">{{ currentName }}</div>
         </q-card-section>
