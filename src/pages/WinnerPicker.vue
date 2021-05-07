@@ -63,6 +63,7 @@ export default {
     },
     initNamesArray() {
       this.namesArray = this.namesText.split('\n')
+      this.namesArray = this.shuffle(this.namesArray)
       console.log("🚀", this.namesArray)
     },
     startAgain() {
