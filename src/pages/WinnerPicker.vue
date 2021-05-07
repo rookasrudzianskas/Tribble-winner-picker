@@ -32,14 +32,14 @@
     </q-card>
 
     <div  v-else class="winner-screen">
-      <h1 class=" deep-shadow text-white absolute-top text-center text-bold">WINNER!! 🥰</h1>
-      <q-card v-if="currentName" dark class="bg-primary" bordered>
+      <h1 v-if="pickedWinner" class=" deep-shadow text-white absolute-top text-center text-bold">WINNER!! 🥰</h1>
+      <q-card v-if="currentName" dark :class="pickedWinner ? 'bg-green-7' : 'bg-primary' " bordered>
         <q-card-section>
           <div class="text-h6">{{ currentName }}</div>
         </q-card-section>
       </q-card>
 
-      <q-btn @click="startAgain" color="primary" class="start-again absolute" label="Start Again ➿">
+      <q-btn v-if="pickedWinner" @click="startAgain" color="primary" class="start-again absolute" label="Start Again ➿">
 
       </q-btn>
     </div>
@@ -57,6 +57,8 @@ export default {
       namesText: '',
       namesArray: [],
       currentName: '',
+      pickedWinner: false
+
     }
   },
   methods: {
@@ -79,7 +81,7 @@ export default {
 
       animateNamesInterval = setInterval(() => {
         // goes by the interval, displays name from the array, and after 0.2s changes
-        this.currentName = this.namesArray[counter]
+        this.currentName = ''
         /// then we reach the end of the array
         if(counter === this.namesArray.length -1) {
           // we set the counter to 0 and start again
@@ -90,13 +92,15 @@ export default {
           counter++
         }
         setTimeout(() => {
-          this.currentName = ''
+          this.currentName = this.namesArray[counter]
+
         }, 100)
       }, 200)
     },
     stopAnimatingNames() {
       setTimeout(() => {
         clearInterval(animateNamesInterval)
+        this.pickedWinner = true
       }, 4000)
     },
     shuffle(a) {
