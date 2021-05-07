@@ -108,7 +108,7 @@ export default {
       setTimeout(() => {
         clearInterval(animateNamesInterval)
         this.pickedWinner = true
-      }, 4000)
+      }, 8400)
     },
     shuffle(a) {
       var j, x, i;
