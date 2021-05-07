@@ -75,6 +75,8 @@ export default {
     },
     startAgain() {
       this.showWinnerScreen = false
+      this.pickedWinner = false
+      this.currentName = ''
     },
     animateNames() {
       let counter = 0
