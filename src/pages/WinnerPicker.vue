@@ -33,11 +33,13 @@
 
     <div  v-else class="winner-screen">
       <h1 v-if="pickedWinner" class=" deep-shadow text-white absolute-top text-center text-bold">WINNER!! 🥰</h1>
+      <div class="name-card">
       <q-card v-if="currentName" dark :class="!pickedWinner?'bg-primary':'bg-green-7' " bordered>
         <q-card-section>
           <div class="text-h6">{{ currentName }}</div>
         </q-card-section>
       </q-card>
+      </div>
 
       <q-btn v-if="pickedWinner" @click="startAgain" color="primary" class="start-again absolute" label="Start Again ➿">
 
@@ -163,6 +165,13 @@ export default {
 
 .winner-screen {
   z-index: 4;
+  .name-card {
+    transform: scale(0.5);
+    transition: transform 7.4s linear;
+    &.zoom {
+      transform: scale(3);
+    }
+  }
   .start-again {
     bottom: 20px;
     left: 50%;
